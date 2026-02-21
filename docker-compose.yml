@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  smart_manufacturing_edge:
+    build: .
+    container_name: smart_edge_node
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount the models directory to persist trained weights dynamically
+      - ./src:/app/src
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
